@@ -1,7 +1,7 @@
-import express, { request, response } from "express"
+import { Router } from "express";
 import { createProduct, deleteProduct, listProduct, listProductDetail, updateProduct } from "../../controllers/products";
 
-const ProductRoute = express.Router();
+const ProductRoute = Router();
 
 
 

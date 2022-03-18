@@ -1,11 +1,6 @@
-import { request, response } from "express"
 import products from "../models/products"
 
 
-// const products = [
-//     {id:1, name:"product 1"},    
-//     {id:2, name:"product 2"}    
-// ]
 
 export const listProduct = (request,response) => {
     try {
@@ -21,15 +16,14 @@ export const listProductDetail = (request, response)=>{
     response.json(products)
 }
 
-export const createProduct = (request, response)=>{
+export const createProduct = async (request, response)=>{
     try {
-        const product = products.find().exec()
+        const product = await products(request.body).save();
         response.json(product)
     } catch (error) {
-        response.status(400).json({message:"khong the tao moi"})
+        response.status(400).json
+        ({message:"khong the tao moi"})
     }
-    // products.push(request.body)
-    // response.json(products)
 }
 
 export const deleteProduct = (request, response)=>{

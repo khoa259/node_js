@@ -1,4 +1,5 @@
-import mongoose from "mongoose"
+import mongoose  from "mongoose";
+
 
 const productSchema = new mongoose.Schema({
     name:{
@@ -9,6 +10,6 @@ const productSchema = new mongoose.Schema({
         type:Number,
         required:true
     }
-});
+},{timestamps:true});
 
 export default mongoose.model('Product',productSchema)

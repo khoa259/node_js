@@ -6,11 +6,13 @@ import ProductRoute from "./router/products/product";
 import {checkAuth} from "./middleware/checkAuth"
 
 const app = express();
-
+app.use(express.json())
 app.use( checkAuth, homeRoute);
+app.use("/api", ProductRoute);
 app.use("/api", checkAuth,ProductRoute);
 
-mongoose.connect('mongodb://localhost:27017/nodejs').then(()=> console.log("connect db succes "))
+mongoose.connect('mongodb://localhost:27017/nodejs')
+.then(()=> console.log("connect db succes "))
 .catch((error)=>{
     console.log(error);
 });
