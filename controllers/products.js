@@ -10,9 +10,15 @@ export const listProduct = async (request,response) => {
     }
 }
 
-export const listProductDetail = (request, response)=>{
-    const product = products.find(item=> item.id === +request.params.id)
-    response.json(products)
+export const listProductDetail = async (request, response)=>{
+    try {
+        const product = await products.findOne({id:request.params.id}).exec();
+        response.json(product)
+    } catch (error) {
+        response.status(400).json({message:"khong tim thay data"})
+
+    }
+ 
 }
 
 export const createProduct = async (request, response)=>{
@@ -26,7 +32,7 @@ export const createProduct = async (request, response)=>{
 
 export const deleteProduct = async (request, response)=>{
     try {
-        const product = await products.findOneAndDelete({_id:request.params.id}).exec()
+        const product = await products.findOneAndDelete({id:request.params.id}).exec()
         response.json(product)
     } catch (error) {
         response.status(400).json({message:"không thể xóa"})
@@ -36,6 +42,15 @@ export const deleteProduct = async (request, response)=>{
     //response.json(products.filter(item => item.id !== +request.params.id));  
 }
 
-export const updateProduct = (request, response)=>{
-    response.json(products.map(item => item.id === +request.params.id? request.body:item))
+export const updateProduct = async (request, response)=>{
+    
+    try {
+        const product = await products.findOneAndUpdate({id:request.params.id},request.body,{new:true}).exec();
+        response.json(product)
+    } catch (error) {
+        response.status(400).json({message:"không thể cap nhat"})
+    }
+
+
+    // response.json(products.map(item => item.id === +request.params.id? request.body:item))
 }
