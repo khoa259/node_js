@@ -1,4 +1,5 @@
-import mongoose  from "mongoose";
+import mongoose , {ObjectId}  from "mongoose";
+import category from "./category";
 
 
 const productSchema = new mongoose.Schema({
@@ -9,6 +10,10 @@ const productSchema = new mongoose.Schema({
     price:{
         type:Number,
         required:true
+    },
+    category:{
+        type: ObjectId,
+        ref: 'category'
     }
 },{timestamps:true});
 
