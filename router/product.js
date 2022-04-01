@@ -11,10 +11,13 @@ ProductRoute.get('/products',checkAuth,listProduct);
 
 ProductRoute.get('/products/:productId',checkAuth,listProductDetail);
 
-ProductRoute.post('/products/:userId', requiredSigin, isAuth, isAdmin,createProduct);
+ProductRoute.post('/products/:userId',requiredSigin, isAuth, isAdmin,createProduct);
 
 ProductRoute.delete('/products/:productId',checkAuth, deleteProduct);
 
 ProductRoute.put('/products/:productId',checkAuth, updateProduct);
+
+
+ProductRoute.param('userId', userById);
 
 export default ProductRoute

@@ -1,5 +1,4 @@
-import expressJWT from 'express-jwt';
-
+import expressJWT from 'express-jwt'
 export const checkAuth = function (req,res,next){
     const isAdmin = true
     if(isAdmin){
