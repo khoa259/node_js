@@ -38,13 +38,15 @@ export const signin = async (request,response) => {
         })
     }
 
-    const token = jwt.sign({_id:user._id},"12345",{expiresIn: '1h'})
+    const token = jwt.sign({_id:user._id},"12345",{expiresIn: '365d'})
 
     response.json({
-        token,user:{
+        token,
+        user:{
             _id:user._id,
             email:user.email,
-            name:user.name
+            name:user.name,
+            role: user.role
         }
     })
 }

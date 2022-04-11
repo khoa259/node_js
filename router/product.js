@@ -17,7 +17,6 @@ ProductRoute.delete('/products/:productId',checkAuth, deleteProduct);
 
 ProductRoute.put('/products/:productId',checkAuth, updateProduct);
 
-
 ProductRoute.param('userId', userById);
 
 export default ProductRoute

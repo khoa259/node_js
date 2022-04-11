@@ -29,5 +29,13 @@ export const listCategoryDetail = async (request,response)=>{
         
     }
 }
-export const deleteCategory = async (request,response)=>{}
+export const deleteCategory = async (request,response)=>{
+    try {
+        const category =  await Category.findOneAndDelete({_id:request.params.id}).exec()
+        response.json(category)
+    } catch (error) {
+        response.status(400).json({message:"không thể xóa dữ liệu"})
+
+    }
+}
 export const updateCategory = async (request,response)=>{}
