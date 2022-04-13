@@ -23,10 +23,10 @@ export const listProduct = async (request,response) => {
 
 export const listProductDetail = async (request, response)=>{
     try {
-        const product = await products.findOne({id: request.params.id}).exec();
+        const product = await products.findOne({_id: request.params.id}).exec();
         response.json(product)
     } catch (error) {
-        response.status(400).json({message:"khong tim thay data"})
+        response.status(400).json({message:"kho ng tim thay data"})
 
     }
  
@@ -43,7 +43,7 @@ export const createProduct = async (request, response)=>{
 
 export const deleteProduct = async (request, response)=>{
     try {
-        const product = await products.findOneAndDelete({id: request.params.id}).exec()
+        const product = await products.findOneAndDelete({_id: request.params.id}).exec()
         response.json(product)
     } catch (error) {
         response.status(400).json({message:"không thể xóa"})

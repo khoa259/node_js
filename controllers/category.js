@@ -38,4 +38,13 @@ export const deleteCategory = async (request,response)=>{
 
     }
 }
-export const updateCategory = async (request,response)=>{}
+
+ export const updateCategory = async (request,response)=>{
+    try {
+        const category = await Category.findOneAndUpdate({_id: request.params.id},request.body,{new:true}).exec()
+
+        response.json(category)
+    } catch (error){
+        response.status(400).json({message: "cap nhat khong thanh cong"})
+    }
+ }

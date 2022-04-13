@@ -9,13 +9,13 @@ const ProductRoute = Router();
 
 ProductRoute.get('/products',checkAuth,listProduct);
 
-ProductRoute.get('/products/:productId',checkAuth,listProductDetail);
+ProductRoute.get('/products/:id',checkAuth,listProductDetail);
 
 ProductRoute.post('/products/:userId',requiredSigin, isAuth, isAdmin,createProduct);
 
-ProductRoute.delete('/products/:productId',checkAuth, deleteProduct);
+ProductRoute.delete('/products/:id',checkAuth, deleteProduct);
 
-ProductRoute.put('/products/:productId',checkAuth, updateProduct);
+ProductRoute.put('/products/:id',checkAuth, updateProduct);
 
 ProductRoute.param('userId', userById);
 
