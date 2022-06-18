@@ -3,7 +3,7 @@ import products from "../models/products"
 
 export const listProduct = async (request,response) => {
     try {
-        const mysort = { name:-1}
+        const mysort = {createdAt:-1}
         const product = await products.find().sort(mysort).exec()
         response.json(product)
     } catch (error) {

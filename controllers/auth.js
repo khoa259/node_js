@@ -50,3 +50,12 @@ export const signin = async (request,response) => {
         }
     })
 }
+
+export const ListUser = async (request,response) => {
+    try {
+        const user = await User.find({email}).exec()
+        response.json(user)
+    } catch (error) {
+        response.status(400).json({message:"khong tim thay data"})
+    }
+}

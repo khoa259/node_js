@@ -11,7 +11,8 @@ ProductRoute.get('/products',checkAuth,listProduct);
 
 ProductRoute.get('/products/:id',checkAuth,listProductDetail);
 
-ProductRoute.post('/products/:userId',requiredSigin, isAuth, isAdmin,createProduct);
+ProductRoute.post('/products', createProduct); 
+// :userId',requiredSigin, isAuth, isAdmin,createProduct
 
 ProductRoute.delete('/products/:id',checkAuth, deleteProduct);
 

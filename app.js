@@ -5,11 +5,13 @@ import ProductRoute from "./router/product";
 import categoryRouter from "./router/category";
 import cors from 'cors'
 import UserRouter from "./router/auth";
+import bookRoute from "./router/books";
 
 const app = express();
 app.use(cors())
 app.use(express.json())
 app.use("/api", ProductRoute);
+app.use("/api", bookRoute);
 app.use("/api", categoryRouter)
 app.use("/api", UserRouter)
 
