@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {ObjectId} from "mongoose";
 
 const bookSchema = new mongoose.Schema({
     name:{
@@ -26,5 +26,9 @@ const bookSchema = new mongoose.Schema({
     //     default: 0,
     //     require:true
     // }
+     category:{
+        type: ObjectId,
+        ref: 'category'
+    },
 },{timestamps:true})
 export default mongoose.model('Books' ,bookSchema)
